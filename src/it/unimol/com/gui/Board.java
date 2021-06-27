@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class Board extends JFrame{
+public class Board extends JFrame {
     private final JPanel gui = new JPanel(new BorderLayout(3, 3));
     private JButton[][] mazeBoardSquares = new JButton[11][11];
     private JPanel mazeBoard;
@@ -42,17 +42,13 @@ public class Board extends JFrame{
                 JButton b = new JButton();
                 b.setMargin(buttonMargin);
 
-                if (
-                        this.mazeNotSolved.getMazeCell(i, j).getValue().equals("#")
-                ) {
-                    b.setBackground(Color.YELLOW);
-
-                } else if (this.mazeNotSolved.getMazeCell(i, j).getValue().equals("+") ||
-                        this.mazeNotSolved.getMazeCell(i, j).getValue().equals("S") ||
+                if (this.mazeNotSolved.getMazeCell(i, j).getValue().equals("S") ||
                         this.mazeNotSolved.getMazeCell(i, j).getValue().equals("🏠")) {
                     b.setBackground(Color.GREEN);
+
                 } else if (this.mazeNotSolved.getMazeCell(i, j).getValue().equals("▀"))
                     b.setBackground(Color.BLACK);
+
                 else
                     b.setBackground(Color.white);
                 mazeBoardSquares[i][j] = b;
@@ -98,7 +94,7 @@ public class Board extends JFrame{
 
     }
 
-    private void generateBfsPanel(){
+    private void generateBfsPanel() {
         bfsMazeBoard = new JPanel(new GridLayout(0, 11));
         bfsMazeBoard.setBorder(new LineBorder(Color.BLACK));
 
@@ -108,15 +104,18 @@ public class Board extends JFrame{
                 JButton b = new JButton();
                 b.setMargin(buttonMargin);
 
-                if (bfsMaze.getMazeCell(i, j).getValue().equals("S") ||
-                        bfsMaze.getMazeCell(i, j).getValue().equals("#") ||
-                        bfsMaze.getMazeCell(i, j).getValue().equals("🏠")
+                if (    this.bfsMaze.getMazeCell(i, j).getValue().equals("S") ||
+                        this.bfsMaze.getMazeCell(i, j).getValue().equals("🏠") ||
+                        this.bfsMaze.getMazeCell(i, j).getValue().equals("+")
                 ) {
-                    b.setBackground(Color.YELLOW);
-                } else if (bfsMaze.getMazeCell(i, j).getValue().equals("+")) {
                     b.setBackground(Color.GREEN);
+
+                } else if (bfsMaze.getMazeCell(i, j).getValue().equals("#")) {
+                    b.setBackground(Color.YELLOW);
+
                 } else if (bfsMaze.getMazeCell(i, j).getValue().equals("▀"))
                     b.setBackground(Color.BLACK);
+
                 else
                     b.setBackground(Color.white);
                 mazeBoardSquares[i][j] = b;
@@ -126,7 +125,7 @@ public class Board extends JFrame{
 
     }
 
-    private void generateDfsPanel(){
+    private void generateDfsPanel() {
         dfsMazeBoard = new JPanel(new GridLayout(0, 11));
         dfsMazeBoard.setBorder(new LineBorder(Color.BLACK));
 
@@ -135,16 +134,19 @@ public class Board extends JFrame{
             for (int j = 0; j < 11; j++) {
                 JButton b = new JButton();
                 b.setMargin(buttonMargin);
+                if (this.dfsMaze.getMazeCell(i, j).getValue().equals("S") ||
+                        this.dfsMaze.getMazeCell(i, j).getValue().equals("🏠")) {
+                    b.setBackground(Color.GREEN);
 
-                if (dfsMaze.getMazeCell(i, j).getValue().equals("S") ||
-                        dfsMaze.getMazeCell(i, j).getValue().equals("#") ||
-                        dfsMaze.getMazeCell(i, j).getValue().equals("🏠")
-                ) {
+                } else if (dfsMaze.getMazeCell(i, j).getValue().equals("#")) {
                     b.setBackground(Color.YELLOW);
+
                 } else if (dfsMaze.getMazeCell(i, j).getValue().equals("+")) {
                     b.setBackground(Color.GREEN);
+
                 } else if (dfsMaze.getMazeCell(i, j).getValue().equals("▀"))
                     b.setBackground(Color.BLACK);
+
                 else
                     b.setBackground(Color.white);
                 mazeBoardSquares[i][j] = b;

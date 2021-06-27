@@ -5,8 +5,6 @@ import it.unimol.com.gui.Board;
 public class Main {
     public static void main (String args[]){
         Handler handler = new Handler();
-
-        //handler.newGame();
         handler.createMaze();
         handler.showMaze();
 

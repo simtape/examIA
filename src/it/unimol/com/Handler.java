@@ -143,6 +143,9 @@ public class Handler {
             }
 
         }
+        maze.getMazeCell(0,1).setValue("S");
+
+
 
     }
 
