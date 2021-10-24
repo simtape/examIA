@@ -6,7 +6,7 @@ public class Main {
         handler.createMaze();
         handler.showMaze();
         Board board = new Board(handler.getMazeBFS(), handler.getMazeDFS(), handler.getMazeNotSolved())
-        board.setSize(600, 600);
+        board.setSize(600, 600)
         board.setVisible(true);
     }
 }
